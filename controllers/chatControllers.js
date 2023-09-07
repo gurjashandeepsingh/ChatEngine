@@ -25,7 +25,6 @@ const accessChat = asyncHandler(async(request, response) => {
             const allMessageIds = await result2.map((u) => {
                 return u.messageId;
             });
-                /*Fix the line below, not RETURNING ALL readBy */
             const readByQuery = await readBy.findAll({where: {messageId: {$in: allMessages.messageId }}}) 
             response.status(200). send(resultNew, allMessages, readByQuery);
         }
